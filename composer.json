@@ -20,7 +20,9 @@
 		"php": ">=5.5.9",
 		"laravel/framework": "5.2.*",
 		"barryvdh/laravel-ide-helper": "v2.2.0",
-		"caouecs/laravel-lang": "~3.0"
+		"caouecs/laravel-lang": "~3.0",
+		"twbs/bootstrap": "v3.3.6",
+		"components/jquery": "1.12.4"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",
@@ -51,10 +53,14 @@
 		],
 		"post-install-cmd": [
 			"Illuminate\\Foundation\\ComposerScripts::postInstall",
+			"php artisan vendor:publish --tag=public --force",
 			"php artisan optimize"
 		],
 		"post-update-cmd": [
 			"Illuminate\\Foundation\\ComposerScripts::postUpdate",
+			"php artisan ide-helper:generate",
+			"php artisan ide-helper:meta",
+			"php artisan vendor:publish --tag=public --force",
 			"php artisan optimize"
 		]
 	},

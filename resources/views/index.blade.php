@@ -3,10 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-
-	<!-- Latest compiled and minified CSS & JS -->
-	<link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" media="screen" href="{!! asset('vendor/bootstrap/css/bootstrap.min.css') !!}">
+	<script type="text/javascript" src="{!! asset('vendor/jquery/jquery.min.js') !!}"></script>
+	<script type="text/javascript" src="{!! asset('vendor/bootstrap/js/bootstrap.min.js') !!}"></script>
 </head>
 <body>
 <div class="container">

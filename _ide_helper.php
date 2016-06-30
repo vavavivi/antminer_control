@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.39 on 2016-06-29.
+ * Generated for Laravel 5.2.39 on 2016-06-30.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -1108,7 +1108,7 @@ namespace {
          */
         public static function handle($input, $output = null){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            return \App\Console\Kernel::handle($input, $output);
+            return \AntControl\Console\Kernel::handle($input, $output);
         }
         
         /**
@@ -1121,7 +1121,7 @@ namespace {
          */
         public static function terminate($input, $status){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            \App\Console\Kernel::terminate($input, $status);
+            \AntControl\Console\Kernel::terminate($input, $status);
         }
         
         /**
@@ -1133,7 +1133,7 @@ namespace {
          */
         public static function registerCommand($command){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            \App\Console\Kernel::registerCommand($command);
+            \AntControl\Console\Kernel::registerCommand($command);
         }
         
         /**
@@ -1146,7 +1146,7 @@ namespace {
          */
         public static function call($command, $parameters = array()){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            return \App\Console\Kernel::call($command, $parameters);
+            return \AntControl\Console\Kernel::call($command, $parameters);
         }
         
         /**
@@ -1159,7 +1159,7 @@ namespace {
          */
         public static function queue($command, $parameters = array()){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            \App\Console\Kernel::queue($command, $parameters);
+            \AntControl\Console\Kernel::queue($command, $parameters);
         }
         
         /**
@@ -1170,7 +1170,7 @@ namespace {
          */
         public static function all(){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            return \App\Console\Kernel::all();
+            return \AntControl\Console\Kernel::all();
         }
         
         /**
@@ -1181,7 +1181,7 @@ namespace {
          */
         public static function output(){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            return \App\Console\Kernel::output();
+            return \AntControl\Console\Kernel::output();
         }
         
         /**
@@ -1192,7 +1192,7 @@ namespace {
          */
         public static function bootstrap(){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            \App\Console\Kernel::bootstrap();
+            \AntControl\Console\Kernel::bootstrap();
         }
         
     }
@@ -1339,7 +1339,7 @@ namespace {
         /**
          * Get the currently authenticated user.
          *
-         * @return \App\User|null 
+         * @return \AntControl\User|null 
          * @static 
          */
         public static function user(){
@@ -1443,7 +1443,7 @@ namespace {
          *
          * @param mixed $id
          * @param bool $remember
-         * @return \App\User 
+         * @return \AntControl\User 
          * @static 
          */
         public static function loginUsingId($id, $remember = false){
@@ -1548,7 +1548,7 @@ namespace {
         /**
          * Return the currently cached user.
          *
-         * @return \App\User|null 
+         * @return \AntControl\User|null 
          * @static 
          */
         public static function getUser(){
@@ -1590,7 +1590,7 @@ namespace {
         /**
          * Get the last user we attempted to authenticate.
          *
-         * @return \App\User 
+         * @return \AntControl\User 
          * @static 
          */
         public static function getLastAttempted(){
@@ -1650,7 +1650,7 @@ namespace {
         /**
          * Determine if the current user is authenticated.
          *
-         * @return \App\User 
+         * @return \AntControl\User 
          * @throws \Illuminate\Auth\AuthenticationException
          * @static 
          */

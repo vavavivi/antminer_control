@@ -155,8 +155,12 @@ return [
         AntControl\Providers\AuthServiceProvider::class,
         AntControl\Providers\EventServiceProvider::class,
         AntControl\Providers\RouteServiceProvider::class,
+        AntControl\Providers\BootstrapServiceProvider::class,
+        AntControl\Providers\JQueryServiceProvider::class,
 
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+
+
 
     ],
 
