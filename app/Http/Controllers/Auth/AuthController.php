@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace AntControl\Http\Controllers\Auth;
 
-use App\User;
+use AntControl\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use AntControl\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

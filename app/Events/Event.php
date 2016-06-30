@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace AntControl\Events;
 
 abstract class Event
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs;
+namespace AntControl\Jobs;
 
 use Illuminate\Bus\Queueable;
 
