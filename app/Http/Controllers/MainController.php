@@ -9,6 +9,6 @@ use AntControl\Http\Requests;
 class MainController extends Controller
 {
     public function index(){
-		return 'Hello World!';
+		view('index');
 	}
 }
