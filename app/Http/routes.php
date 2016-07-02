@@ -11,4 +11,12 @@
 	|
 	*/
 
-	Route::get('/', ['middleware' => 'auth.basic', 'uses' => 'MainController@index', 'as' => 'main']);
+	Route::group(['middleware' => 'auth.basic', 'as' => 'auth::'], function () {
+		Route::get('/', ['uses' => 'IndexController@index', 'as' => 'index']);
+
+		Route::get('miners', ['uses' => 'MinersController@index', 'as' => 'miners']);
+		Route::get('miners/refreshHost', ['uses' => 'MinersController@refreshHosts', 'as' => 'miners.refresh.host']);
+		Route::get('miners/{id}/refreshInfo', ['uses' => 'MinersController@refreshInfo', 'as' => 'miners.refresh.info'])->where(['id' => '[0-9]+']);
+	});
+
+

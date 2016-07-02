@@ -22,7 +22,8 @@
 		"barryvdh/laravel-ide-helper": "v2.2.0",
 		"caouecs/laravel-lang": "~3.0",
 		"twbs/bootstrap": "v3.3.6",
-		"components/jquery": "1.12.4"
+		"components/jquery": "1.12.4",
+		"yangqi/htmldom": "dev-master"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",

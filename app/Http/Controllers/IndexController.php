@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 
 use AntControl\Http\Requests;
 
-class MainController extends Controller
+class IndexController extends Controller
 {
     public function index(){
 		return view('index');
 	}
+
+
 }
