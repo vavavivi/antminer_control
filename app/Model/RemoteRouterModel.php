@@ -7,11 +7,11 @@
 	class RemoteRouterModel extends Model {
 
 		public function getHosts() {
-			$ch = curl_init(env('REMOTE_HOST','http://localhost') . '/userRpm/LanArpBindingListRpm.htm');
+			$ch = curl_init(env('REMOTE_HOST', 'http://localhost') . '/userRpm/LanArpBindingListRpm.htm');
 			curl_setopt_array($ch, [
 				CURLOPT_HTTPAUTH       => CURLAUTH_BASIC,
-				CURLOPT_USERPWD        => env('REMOTE_AUTH',''),
-				CURLOPT_REFERER        => env('REMOTE_HOST','http://localhost') . '/userRpm/MenuRpm.htm',
+				CURLOPT_USERPWD        => env('REMOTE_AUTH', ''),
+				CURLOPT_REFERER        => env('REMOTE_HOST', 'http://localhost') . '/userRpm/MenuRpm.htm',
 				CURLOPT_RETURNTRANSFER => true,
 			]);
 			$response = curl_exec($ch);
@@ -44,21 +44,25 @@
 			return $result;
 		}
 
-		public function getHostInfo($ip) {
-			$ch = curl_init(env('REMOTE_HOST','http://localhost') . '/userRpm/VirtualServerRpm.htm?ExPort=8081&InPort=80&Ip=' . $ip . '&Protocol=2&State=1&Commonport=0&Changed=1&SelIndex=0&Page=1&Save=%D0%A1%D0%BE%D1%85%D1%80%D0%B0%D0%BD%D0%B8%D1%82%D1%8C');
+		public function switchHost($ip) {
+			$ch = curl_init(env('REMOTE_HOST', 'http://localhost') . '/userRpm/VirtualServerRpm.htm?ExPort=8081&InPort=80&Ip=' . $ip . '&Protocol=2&State=1&Commonport=0&Changed=1&SelIndex=0&Page=1&Save=%D0%A1%D0%BE%D1%85%D1%80%D0%B0%D0%BD%D0%B8%D1%82%D1%8C');
 			curl_setopt_array($ch, [
 				CURLOPT_HTTPAUTH       => CURLAUTH_BASIC,
-				CURLOPT_USERPWD        => env('REMOTE_AUTH',''),
-				CURLOPT_REFERER        => env('REMOTE_HOST','http://localhost') . '/userRpm/VirtualServerRpm.htm?Modify=0&Page=1',
+				CURLOPT_USERPWD        => env('REMOTE_AUTH', ''),
+				CURLOPT_REFERER        => env('REMOTE_HOST', 'http://localhost') . '/userRpm/VirtualServerRpm.htm?Modify=0&Page=1',
 				CURLOPT_RETURNTRANSFER => true,
 			]);
 			curl_exec($ch);
+		}
 
-			$ch = curl_init(env('MINER_HOST','http://localhost') . '/cgi-bin/minerStatus.cgi');
+		public function getHostInfo($ip) {
+			$this->switchHost($ip);
+
+			$ch = curl_init(env('MINER_HOST', 'http://localhost') . '/cgi-bin/minerStatus.cgi');
 			curl_setopt_array($ch, [
 				CURLOPT_HTTPAUTH       => CURLAUTH_DIGEST,
-				CURLOPT_USERPWD        => env('MINER_AUTH',''),
-				CURLOPT_REFERER        => env('MINER_HOST','http://localhost') . '/cgi-bin/minerStatus.cgi',
+				CURLOPT_USERPWD        => env('MINER_AUTH', ''),
+				CURLOPT_REFERER        => env('MINER_HOST', 'http://localhost') . '/cgi-bin/minerStatus.cgi',
 				CURLOPT_RETURNTRANSFER => true,
 			]);
 
@@ -82,11 +86,11 @@
 			$result['temp1'] = $html->find('#cbi-table-1-temp', 0)->innertext;
 			$result['temp2'] = $html->find('#cbi-table-1-temp', 1)->innertext;
 
-			$ch = curl_init(env('MINER_HOST','http://localhost') . '/cgi-bin/minerConfiguration.cgi');
+			$ch = curl_init(env('MINER_HOST', 'http://localhost') . '/cgi-bin/minerConfiguration.cgi');
 			curl_setopt_array($ch, [
 				CURLOPT_HTTPAUTH       => CURLAUTH_DIGEST,
-				CURLOPT_USERPWD        => env('MINER_AUTH',''),
-				CURLOPT_REFERER        => env('MINER_HOST','http://localhost') . '/cgi-bin/minerConfiguration.cgi',
+				CURLOPT_USERPWD        => env('MINER_AUTH', ''),
+				CURLOPT_REFERER        => env('MINER_HOST', 'http://localhost') . '/cgi-bin/minerConfiguration.cgi',
 				CURLOPT_RETURNTRANSFER => true,
 			]);
 			if (!$response = curl_exec($ch)) return false;
@@ -114,11 +118,11 @@
 
 			$result['frequency'] = $freq[1];
 
-			$ch = curl_init(env('MINER_HOST','http://localhost') . '/cgi-bin/get_network_info.cgi');
+			$ch = curl_init(env('MINER_HOST', 'http://localhost') . '/cgi-bin/get_network_info.cgi');
 			curl_setopt_array($ch, [
 				CURLOPT_HTTPAUTH       => CURLAUTH_DIGEST,
-				CURLOPT_USERPWD        => env('MINER_AUTH',''),
-				CURLOPT_REFERER        => env('MINER_HOST','http://localhost') . '/network.html',
+				CURLOPT_USERPWD        => env('MINER_AUTH', ''),
+				CURLOPT_REFERER        => env('MINER_HOST', 'http://localhost') . '/network.html',
 				CURLOPT_RETURNTRANSFER => true,
 			]);
 

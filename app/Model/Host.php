@@ -5,7 +5,7 @@
 	use Illuminate\Database\Eloquent\Model;
 
 	class Host extends Model {
-		protected $fillable = ['mac', 'ip', 'ip_active',
+		protected $fillable = ['mac', 'ip', 'ip_static',
 			'pool1_url', 'pool1_worker', 'pool1_password',
 			'pool2_url', 'pool2_worker', 'pool2_password',
 			'pool3_url', 'pool3_worker', 'pool3_password',

@@ -1,10 +1,14 @@
 @extends('base')
 
 @section('head')
+	<script type="text/javascript" src="{!! asset('js/common/jquery.ajaxqueue.js') !!}"></script>
+	<script type="text/javascript" src="{!! asset('js/common/bootstrap-progressbar.js') !!}"></script>
 	<script type="text/javascript" src="{!! asset('js/miners.js') !!}"></script>
 @endsection
 
 @section('content')
+	@include('miners._modalRefresh');
+
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<a href="{!! url('/miners/refreshHost/') !!}" class="btn btn-success">Check hosts</a>
@@ -22,6 +26,7 @@
 				<th>#</th>
 				<th>IP</th>
 				<th>Elapsed</th>
+				<th>Pool2 Worker</th>
 				<th>HW</th>
 				<th>GH/S</th>
 				<th>Updated</th>
@@ -31,15 +36,22 @@
 			<tbody>
 
 			@foreach ($hosts as $idx => $host)
-				<tr{!! ($host->active ? '' : ' class="danger"') !!}>
+				<tr class="{!! ($host->active ? '' : 'danger') !!}" data-id="{{$host->id}}">
 					<td>{{$idx+1}}</td>
-					<td>{{$host->ip}}</td>
+					<td>
+						{{$host->ip}}
+						@if ($host->ip_static)
+							<span class="glyphicon glyphicon-ok"></span>
+						@endif
+					</td>
 					<td>{{$host->elapsed}}</td>
+					<td>{{$host->pool2_worker}}</td>
 					<td>{{$host->hw}}</td>
 					<td>{{$host->ghs_5s}}</td>
-					<td>{{$host->updated_at}}</td>
+					<td>{{$host->updated_at->format('H:i:s d.m.Y')}}</td>
 					<td>
-						<a href="{!! url('/miners/'. $host->id .'/refreshInfo/') !!}" class="btn btn-xs btn-primary">Refresh data</a>
+						<button onclick="goHost({{$host->id}})" class="btn btn-xs btn-danger">Go</button>
+						<a href="{!! url('/miners/refreshInfo/') !!}?id={{$host->id}}" class="btn btn-xs btn-primary">Refresh data</a>
 					</td>
 				</tr>
 			@endforeach

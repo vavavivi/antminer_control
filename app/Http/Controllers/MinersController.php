@@ -35,17 +35,30 @@
 			return redirect('miners');
 		}
 
-		public function refreshInfo($id) {
+		public function refreshInfo(Request $request) {
+
 			$remoteRouter = new \AntControl\Model\RemoteRouterModel();
-			$host         = Host::find($id);
+			$host         = Host::find($request->id);
 
 			if ($response = $remoteRouter->getHostInfo($host->ip)) {
 				$host->fill($response);
 			} else {
-				$host->fill(['active' => 0]);
+				$host->fill(['ghs_5s' => 0, 'ghs_avg' => 0, 'active' => 0]);
 			}
 			$host->save();
 
-			return redirect('miners');
+			if ($request->method() == 'POST') {
+				return response()->json(['ok' => true]);
+			} else {
+				return redirect('miners');
+			}
+		}
+
+		public function switchHost(Request $request) {
+			$host = Host::find($request->id);
+
+			(new \AntControl\Model\RemoteRouterModel())->switchHost($host->ip);
+
+			return response()->json(['url' => env('MINER_HOST', 'http://localhost')]);
 		}
 	}

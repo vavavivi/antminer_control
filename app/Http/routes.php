@@ -16,7 +16,11 @@
 
 		Route::get('miners', ['uses' => 'MinersController@index', 'as' => 'miners']);
 		Route::get('miners/refreshHost', ['uses' => 'MinersController@refreshHosts', 'as' => 'miners.refresh.host']);
-		Route::get('miners/{id}/refreshInfo', ['uses' => 'MinersController@refreshInfo', 'as' => 'miners.refresh.info'])->where(['id' => '[0-9]+']);
+
+		Route::any('miners/refreshInfo', ['uses' => 'MinersController@refreshInfo', 'as' => 'miners.refresh.info'])->where(['id' => '[0-9]+']);
+		
+		Route::get('miners/switchHost', ['uses' => 'MinersController@switchHost', 'as' => 'miners.switch']);
+
 	});
 
 
